@@ -55,7 +55,8 @@ async function callModel(model, messages, key, referer) {
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') { res.status(405).json({ error: 'Método no permitido' }); return; }
-  const key = process.env.OPENROUTER_API_KEY;
+  // Limpia espacios o comillas que se cuelan al pegar la key en Vercel
+  const key = (process.env.OPENROUTER_API_KEY || '').trim().replace(/^["']|["']$/g, '');
   if (!key) { res.status(500).json({ error: 'Falta configurar OPENROUTER_API_KEY en el servidor' }); return; }
 
   const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'local';
@@ -70,7 +71,8 @@ module.exports = async function handler(req, res) {
   const primary = process.env.OPENROUTER_MODEL || DEFAULT_FALLBACKS[0];
   const fallbacks = (process.env.OPENROUTER_FALLBACK_MODELS || DEFAULT_FALLBACKS.join(','))
     .split(',').map(s => s.trim()).filter(Boolean);
-  const models = [primary, ...fallbacks.filter(m => m !== primary)];
+  // Siempre se agregan los respaldos por defecto, por si las variables de Vercel quedaron con modelos que ya no son gratuitos
+  const models = [...new Set([primary, ...fallbacks, ...DEFAULT_FALLBACKS])];
 
   const errors = [];
   for (const model of models) {
@@ -83,5 +85,6 @@ module.exports = async function handler(req, res) {
     }
   }
   console.error('Todos los modelos fallaron:', errors.join(' | '));
-  res.status(502).json({ error: 'El asistente no está disponible en este momento' });
+  // El detalle no incluye la key: solo el modelo y el mensaje de OpenRouter, para diagnosticar desde el navegador
+  res.status(502).json({ error: 'El asistente no está disponible en este momento', detail: errors.map(e => e.slice(0, 200)) });
 };

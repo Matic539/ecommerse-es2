@@ -512,7 +512,7 @@
       const r = await fetch('api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: chat.history.slice(-12), context: ctx }) });
       const data = await r.json().catch(() => ({}));
       typing.remove();
-      if (!r.ok || !data.reply) throw new Error(data.error || ('HTTP ' + r.status));
+      if (!r.ok || !data.reply) { if (data.detail) console.warn('Detalle /api/chat:', data.detail); throw new Error(data.error || ('HTTP ' + r.status)); }
       chat.history.push({ role: 'assistant', content: data.reply });
       addMsg('bot', data.reply);
     } catch (err) {
