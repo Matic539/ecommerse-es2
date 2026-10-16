@@ -10,7 +10,7 @@ assets/styles.css       Estilos
 assets/app.js           Lógica del front (catálogo, calculador, carrito, quiz, chat, KPIs)
 api/chat.js             Función serverless que llama a OpenRouter (aquí vive la key)
 api/_system-prompt.js   System Prompt del asistente Max
-server.js               Servidor local para pruebas (node server.js)
+dev-server.js           Servidor local para pruebas (node dev-server.js)
 .env.example            Variables de entorno de ejemplo
 ```
 
@@ -43,7 +43,7 @@ GitHub Pages solo sirve archivos estáticos. Si el chat llamara a OpenRouter des
 
 ```powershell
 copy .env.example .env      # y pega tu key en .env
-node server.js
+node dev-server.js
 ```
 Abre http://localhost:3000. Requiere Node 18 o superior.
 

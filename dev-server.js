@@ -1,4 +1,4 @@
-// Servidor local para probar el prototipo sin Vercel: node server.js
+// Servidor local para probar el prototipo sin Vercel: node dev-server.js
 // Sirve los archivos estáticos y la ruta /api/chat usando las variables de .env
 const http = require('http');
 const fs = require('fs');

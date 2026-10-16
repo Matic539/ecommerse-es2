@@ -520,7 +520,7 @@
       chat.history.pop();
       const local = location.protocol === 'file:' || /github\.io$/.test(location.hostname);
       addMsg('err', local
-        ? 'Max necesita el servidor del prototipo para responder (Vercel o "node server.js"). Desde GitHub Pages o abriendo el archivo directo no puede usar la API de forma segura.'
+        ? 'Max necesita el servidor del prototipo para responder (Vercel o "node dev-server.js"). Desde GitHub Pages o abriendo el archivo directo no puede usar la API de forma segura.'
         : 'Max no pudo responder ahora (' + err.message + '). Intenta de nuevo en unos segundos o escríbenos por WhatsApp.');
     } finally { chat.busy = false; }
   }
