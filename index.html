@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matex · Revestimientos y terminaciones (prototipo)</title>
+<meta name="description" content="Prototipo académico de tienda online para Matex SpA, Puerto Montt. Revestimientos, wall panel, Marmolísima y pisos SPC con stock en línea y asesor virtual.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span>🚚 <b>Despacho gratis</b> en Puerto Montt sobre $250.000</span>
+  <span>🏬 Retiro inmediato en Av. Presidente Ibáñez 216</span>
+  <span>🔒 Pago 100% seguro</span>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <a class="logo" href="#/" aria-label="Matex inicio"><span class="mk">M</span>MATEX</a>
+  <form class="search" id="searchForm" role="search">
+    <label class="sr" for="q">Buscar productos</label>
+    <input id="q" placeholder="Busca un producto o pregúntale a Max" autocomplete="off">
+    <button type="submit">✨ <span class="long">Preguntar a </span>Max</button>
+  </form>
+  <div class="hdr-actions">
+    <button class="icon-btn" id="openQuiz" type="button">🧮 <span class="lbl">Calcular proyecto</span></button>
+    <button class="icon-btn" id="openCart" type="button" aria-label="Abrir carrito">🛒 <span class="lbl">Carrito</span><span class="badge" id="cartCount">0</span></button>
+  </div>
+</div></header>
+<nav class="cats" aria-label="Categorías"><div class="wrap" id="catNav"></div></nav>
+
+<main id="app"></main>
+
+<footer class="site"><div class="wrap">
+  <div><b>MATEX SpA</b>Revestimientos, terminaciones y materiales para la construcción desde 2022.<br>Av. Presidente Ibáñez 216, Puerto Montt, Región de Los Lagos.</div>
+  <div><b>Compra segura</b>Pago con débito, crédito o transferencia.<br>Boleta o factura electrónica.<br>Cambios en 30 días (producto sin instalar).</div>
+  <div><b>Ayuda</b>Asesor virtual 24/7<br>Atención en tienda lun a sáb<br>Programa Maestro Matex</div>
+  <div class="proto">Prototipo académico elaborado para la evaluación ES2 del ramo de E-Commerce (INACAP). No es la tienda oficial de Matex: precios, stock y reseñas son referenciales y las compras son simuladas.</div>
+</div></footer>
+
+<!-- Botón flotante: compra en 1 clic -->
+<div class="oneclick" id="oneclick" role="region" aria-label="Compra rápida">
+  <div class="t"><span id="ocName">Producto</span><b id="ocPrice">$0</b></div>
+  <button class="btn btn-primary" type="button" id="ocBtn">⚡ Comprar en 1 clic</button>
+</div>
+
+<!-- Carrito -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="cart" aria-label="Carrito de compras">
+  <header><h3>Tu carrito</h3><button class="x" type="button" data-close aria-label="Cerrar">×</button></header>
+  <div class="items" id="cartItems"></div>
+  <footer id="cartFoot"></footer>
+</aside>
+
+<!-- Checkout -->
+<div class="modal" id="checkout" role="dialog" aria-modal="true" aria-labelledby="coTitle"><div class="box" id="coBox"></div></div>
+<!-- Quiz de proyecto -->
+<div class="modal" id="quiz" role="dialog" aria-modal="true" aria-labelledby="qzTitle"><div class="box" id="qzBox"></div></div>
+
+<!-- Asistente virtual -->
+<button class="chat-fab" id="chatFab" type="button" aria-label="Abrir asesor virtual"><span class="av">M</span><span class="lbl">¿Dudas? Habla con Max</span></button>
+<section class="chat" id="chat" aria-label="Asesor virtual Max">
+  <div class="ch"><span class="av">M</span><div><b>Max · Asesor Matex</b><small>Asistente con IA · responde al instante</small></div><button class="x" type="button" id="chatClose" aria-label="Cerrar chat">×</button></div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <form id="chatForm"><label class="sr" for="chatIn">Escribe tu consulta</label><input id="chatIn" placeholder="Ej: ¿cuántas planchas necesito para 20 m²?" autocomplete="off" maxlength="600"><button type="submit">Enviar</button></form>
+  <div class="disc">Max es un asistente con IA y puede equivocarse. Confirma cantidades con un vendedor antes de instalar.</div>
+</section>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

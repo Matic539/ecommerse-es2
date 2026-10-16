@@ -1,0 +1,8 @@
+{
+  "name": "matex-ecommerce-prototipo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prototipo de tienda online con asesor IA para Matex SpA (ES2 E-Commerce, INACAP)",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}
