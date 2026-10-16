@@ -34,7 +34,7 @@ GitHub Pages solo sirve archivos estáticos. Si el chat llamara a OpenRouter des
 3. Importa el repositorio `matex-ecommerce`. En *Framework Preset* deja **Other**. No hay comando de build.
 4. En **Environment Variables** agrega:
    - `OPENROUTER_API_KEY` = tu key de OpenRouter
-   - `OPENROUTER_MODEL` = `nex-agi/nex-n2.5-mini:free`
+   - `OPENROUTER_MODEL` = `nvidia/nemotron-3-super-120b-a12b:free`
    - (opcional) `OPENROUTER_FALLBACK_MODELS` = modelos gratuitos de respaldo separados por coma
 5. Presiona **Deploy**. Vercel entrega una URL del tipo `https://matex-ecommerce.vercel.app`. Esa es la URL para el profesor.
 6. Prueba el chat. Si responde "no disponible", revisa en Vercel > Project > Logs el error de OpenRouter (key inválida, modelo inexistente o límite del plan gratuito) y cambia `OPENROUTER_MODEL` por otro modelo `:free` vigente en openrouter.ai/models. Después de cambiar variables, usa **Redeploy**.

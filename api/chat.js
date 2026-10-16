@@ -3,9 +3,9 @@
 const SYSTEM_PROMPT = require('./_system-prompt.js');
 
 const DEFAULT_FALLBACKS = [
-  'meta-llama/llama-3.3-70b-instruct:free',
-  'google/gemma-3-27b-it:free',
-  'mistralai/mistral-small-3.2-24b-instruct:free'
+  'nvidia/nemotron-3-super-120b-a12b:free',
+  'openrouter/free',
+  'google/gemma-4-31b-it:free'
 ];
 const MAX_MSGS = 12;
 const MAX_CHARS = 1200;
